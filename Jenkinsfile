@@ -27,7 +27,7 @@ pipeline {
         
         stage('docker'){
             steps{
-              sh "sudo docker build  -t  thesense03/javaweb:newversion3 ."
+              sh "sudo docker build  -t  thesense03/javaweb:newversion4."
             }
         }    
         
@@ -38,7 +38,7 @@ pipeline {
 }
              
                
-                sh "sudo docker push thesense03/javaweb:newversion3"
+                sh "sudo docker push thesense03/javaweb:newversion4"
            }
         }
         
@@ -46,14 +46,14 @@ pipeline {
             steps{
                 
             sh 'sudo docker rm -f javapp'   
-             sh "sudo docker run -d -p 8080:8080 --name javapp thesense03/javaweb:newversion3"   
+             sh "sudo docker run -d -p 8080:8080 --name javapp thesense03/javaweb:newversion4"   
             }
         }
         stage('QA TEAM'){
             steps{
                 sshagent(['QA_SSH']) {
         sh "ssh -o StrictHostKeyChecking=no ec2-user@43.205.230.80 sudo docker rm -f javapp"           
-        sh "ssh ec2-user@43.205.230.80 sudo docker run -d -p 8080:8080 --name javapp thesense03/javaweb:newversion3"
+        sh "ssh ec2-user@43.205.230.80 sudo docker run -d -p 8080:8080 --name javapp thesense03/javaweb:newversion4"
 }
             }
         }
@@ -85,7 +85,7 @@ pipeline {
             steps{
                 sshagent(['QA_SSH']) {
             sh "ssh -o StrictHostKeyChecking=no ec2-user@3.110.132.146 sudo docker rm -f javapp"           
-            sh "ssh ec2-user@3.110.132.146 sudo docker run -d -p 8080:8080 --name javapp thesense03/javaweb:newversion3"
+            sh "ssh ec2-user@3.110.132.146 sudo docker run -d -p 8080:8080 --name javapp thesense03/javaweb:newversion4"
     }
               }
             }   
