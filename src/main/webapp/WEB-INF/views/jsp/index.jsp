@@ -40,7 +40,7 @@
 
 	<div class="row">
 		<div class="col-md-8">
-			<h2>Welcome to LinuxWorld, India , in fully automated jenkins</h2>
+			<h2>Welcome Hithesh, India , in fully automated jenkins</h2>
 			<h3>Contact training@lwindia.com and phone number</h3>
 		</div>	
 	</div>
